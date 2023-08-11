@@ -1,4 +1,4 @@
-
+<?php include "autenticate.php"; ?>
 <html>
 <?php include "header.php"; ?>
 

@@ -1,15 +1,27 @@
 <?php
 
-// include "dbconfig.php";
+ include "dbconfig.php";
 
 if (!empty($_POST)) {
     $fname = isset($_POST['fname']) ? $_POST['fname'] : '';
     $lname = isset($_POST['lname']) ? $_POST['lname'] : '';
-    $email = isset($_POST['email']) ? $_post['email'] : '';
+    $email = isset($_POST['email']) ?  $_POST['email'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    echo ("values are". $fname);
+    $stmt = $conn->prepare("INSERT INTO  user ( fname ,  lname ,  email ,  password ) VALUES (?,?,?,?)");
+    $stmt->execute([$fname,  $lname, $email ,  $password ]);
 
+    $user_id = $conn->lastInsertId();
+
+    echo $user_id;
+    if ($user_id) {
+        header("Location: signin.php");
+    die();
+    }
+    else{
+        header("Location: signup.php");
+    die();
+    }
 }
 
 
@@ -21,17 +33,14 @@ if (!empty($_POST)) {
 <html>
 
 <head>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
     <!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
-></script>
+
     <title>Sign Up</title>
 </head>
 
@@ -74,7 +83,7 @@ if (!empty($_POST)) {
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="button">Sign up</button>
+                                        <button class="btn btn-dark btn-lg btn-block" >Sign up</button>
                                     </div>
                                     <div style="padding-top:15px">
                                         <p class="mb-1 pb-lg-1" style="color: #393f81;">Already have an account? <a href="#!" style="color: #393f81;">Click here</a></p>
@@ -90,5 +99,8 @@ if (!empty($_POST)) {
         </div>
     </section>
 </body>
-
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
+></script>
 </html>

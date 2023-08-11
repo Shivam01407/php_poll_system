@@ -5,5 +5,6 @@
     <div class="navbar-brand" style="padding:55 0;">
         Poll and Voting System
     </div>
+    <a class="btn btn-danger" href="logout.php">Logout</a>
 
 </nav>

@@ -1,4 +1,6 @@
+<?php include "autenticate.php"; ?>
 <?php
+
 include "dbconfig.php";
 
 if (!empty($_POST)) {

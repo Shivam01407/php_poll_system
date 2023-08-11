@@ -1,11 +1,43 @@
+<?php
+
+include "dbconfig.php";
+
+if (!empty($_POST)) {
+    $email = isset($_POST['email']) ?  $_POST['email'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+    $stmt = $conn->prepare("SELECT id FROM `user` WHERE email = ? AND password = ?");
+    $stmt->execute([$email,  $password]);
+    $user_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($user_id)) {
+        $user_id = $user_id[0]['id'];
+        session_start();
+        $_SESSION["user_id"] = $user_id;
+        header("Location: index.php");
+        die();
+    } else {
+        header("Location: signin.php");
+        die();
+    }
+    
+}
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
     <title>Sign in</title>
@@ -21,22 +53,22 @@
                         <div class="col-md-6 col-lg-12 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
 
-                                <form style="padding: 35px">
+                                <form style="padding: 35px" action="signin.php" method="POST">
 
                                     <h4 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h4>
 
                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                                        <input type="email" name="email" id="form2Example17" class="form-control form-control-lg" />
                                         <label class="form-label" for="form2Example17">Email address</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                                        <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" />
                                         <label class="form-label" for="form2Example27">Password</label>
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block">Login</button>
                                     </div>
                                     <div style="padding-top:15px">
                                         <a class="small text-muted" href="#!">Forgot password?</a>
@@ -53,5 +85,6 @@
         </div>
     </section>
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
 
 </html>
