@@ -33,10 +33,10 @@ if (isset($_GET["id"])) {
 <body>
     <?php include "navbar.php"; ?>
 
-    <div style="padding:40">
+    <div style="padding:40; padding-top: 5px;">
         <div>
             <h2>Vote</h2>
-            <hr /><br />
+            <hr />
         </div>
         <div>
             <h3> <?php echo $polls["title"] ?> </h3>
@@ -53,7 +53,7 @@ if (isset($_GET["id"])) {
                 <?php endforeach; ?>
                 <br>
                 <button class="btn btn-success">Vote</button>
-                <a class="btn btn-primary" href="result.php?id=<?php echo $_GET["id"]?>">Result</a>
+                <a class="btn btn-info" href="result.php?id=<?php echo $_GET["id"]?>">Result</a>
             </form>
 
         </div>

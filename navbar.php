@@ -5,6 +5,10 @@
     <div class="navbar-brand" style="padding:55 0;">
         Poll and Voting System
     </div>
-    <a class="btn btn-danger" href="logout.php">Logout</a>
+    <div style=" float: right; margin: 38px 28px;"> <a class="btn btn-danger" href="logout.php">Logout</a></div>
+    
 
 </nav>
+
+<!-- float: right;
+    margin: 40px 21px; -->

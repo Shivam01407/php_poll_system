@@ -72,7 +72,7 @@ if (!empty($_POST)) {
                                     </div>
                                     <div style="padding-top:15px">
                                         <a class="small text-muted" href="#!">Forgot password?</a>
-                                        <p class="mb-1 pb-lg-1" style="color: #393f81;">Don't have an account? <a href="#!" style="color: #393f81;">Register here</a></p>
+                                        <p class="mb-1 pb-lg-1" style="color: #393f81;">Don't have an account? <a href="signup.php" style="color: #393f81;">Register here</a></p>
                                     </div>
                                 </form>
 

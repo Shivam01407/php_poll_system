@@ -25,7 +25,9 @@ if (!empty($_POST)) {
         $stmt->execute([$poll_id, $option]);
     }
     // Output message
-    echo '<script>alert("Poll Sucessfully created")</script>';
+    // echo '<script>alert("Poll Sucessfully created")</script>';
+    header("Location: index.php");
+    die();
 }
 ?>
 
@@ -34,10 +36,10 @@ if (!empty($_POST)) {
 
 <body>
     <?php include "navbar.php"; ?>
-    <div style="padding:40">
+    <div style="padding:40; padding-top: 5px;">
         <div>
             <h2>Create Poll</h2>
-            <hr /><br />
+            <hr />
         </div>
         <div>
             <form action="createPoll.php" method="post">
@@ -51,7 +53,7 @@ if (!empty($_POST)) {
                 </div>
                 <div class="form-group">
                     <label for="answers">Options</label>
-                    <textarea class="form-control" id="options" name="options" placeholder="Enter Options" required></textarea>
+                    <textarea class="form-control" id="options" name="options" placeholder="Enter Options one in a line" required></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-success">Create</button>

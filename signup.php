@@ -86,7 +86,7 @@ if (!empty($_POST)) {
                                         <button class="btn btn-dark btn-lg btn-block" >Sign up</button>
                                     </div>
                                     <div style="padding-top:15px">
-                                        <p class="mb-1 pb-lg-1" style="color: #393f81;">Already have an account? <a href="#!" style="color: #393f81;">Click here</a></p>
+                                        <p class="mb-1 pb-lg-1" style="color: #393f81;">Already have an account? <a href="signin.php" style="color: #393f81;">Click here</a></p>
                                     </div>
                                 </form>
 

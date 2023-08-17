@@ -1,14 +1,14 @@
-<?php include "autenticate.php"; ?>
+
 <html>
 <?php include "header.php"; ?>
 
 <body>
     <?php include "navbar.php"; ?>
 
-    <div style="padding:40">
+    <div style="padding:40; padding-top: 5px;">
         <div>
-            <h4>Result</h4>
-            <hr /><br />
+            <h2>Result</h2>
+            <hr />
         </div>
         <div>
         <?php include "getPollResult.php"?>

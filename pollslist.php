@@ -35,7 +35,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td><?= $poll['createdAt'] ?></td>
         <td>
         <a href="vote.php?id=<?php echo $poll['id'] ?>" class="btn btn-success">Vote</a>
-        <a href="result.php?id=<?php echo $poll['id'] ?>"  class="btn btn-primary">Result</a>
+        <a href="result.php?id=<?php echo $poll['id'] ?>"  class="btn btn-info">Result</a>
         </td>
       </tr>
     <?php endforeach; ?>
