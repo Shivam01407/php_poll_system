@@ -1,5 +1,6 @@
 <?php
 include "dbconfig.php";
+// Vote shouldn't be 
 
 if (isset($_GET["id"])) {
 
